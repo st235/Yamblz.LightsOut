@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
+
 import xyz.javablog.Engine;
 import xyz.javablog.GameEngine;
 import xyz.javablog.GameEngineProvider;
@@ -23,5 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Engine engine = GameEngineProvider.getEngine();
         Field field = engine.obtainNewField(new SquareSize(15));
         Log.d(TAG, field.toString());
+        int score = engine.calculateCurrentScore(TimeUnit.MINUTES.toMillis(2), 8);
+        Log.d(TAG, Integer.toString(score));
     }
 }

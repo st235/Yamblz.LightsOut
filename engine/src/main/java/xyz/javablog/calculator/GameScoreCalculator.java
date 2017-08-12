@@ -9,22 +9,22 @@ import java.util.Map;
 
 public class GameScoreCalculator implements ScoreCalculator {
     private Map<Integer, Double> weightMap = new HashMap<>();
-    private int result = 0;
+    private double result = 0;
 
     public GameScoreCalculator() {
         weightMap.put(ScoreTypes.CLICKS, 0.81);
-        weightMap.put(ScoreTypes.TIME, 0.9);
+        weightMap.put(ScoreTypes.TIME, 0.00007);
     }
 
     @Override
     public ScoreCalculator push(int type, long value) {
         Double weight = weightMap.get(type);
-        result += Math.round(weight * value);
+        result += 10000 / (weight * value);
         return this;
     }
 
     @Override
     public int calculate() {
-        return result;
+        return ((int) Math.round(result));
     }
 }

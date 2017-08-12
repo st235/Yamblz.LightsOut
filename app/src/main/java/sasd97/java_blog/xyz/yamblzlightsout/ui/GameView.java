@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -20,6 +21,9 @@ import xyz.javablog.common.matrixes.Matrix;
 import xyz.javablog.common.sizes.Size;
 
 public class GameView extends View {
+
+    public static final int RX = 30;
+    public static final int INT = 10;
 
     public interface OnGridItemClickListener {
         public void onItemClick(int x, int y);
@@ -38,7 +42,7 @@ public class GameView extends View {
     private int cellSize;
     private Paint paintActive = new Paint();
     private Paint paintPassive = new Paint();
-    private Rect rectangle = new Rect();
+    private RectF rectangle = new RectF();
 
     private OnGridItemClickListener listener;
 
@@ -91,16 +95,13 @@ public class GameView extends View {
     }
     public void setMatrix(Matrix matrix) {
         this.matrix = matrix;
+        invalidate();
     }
 
 
     @Override
     protected void onDraw(Canvas canvas) {
 
-        for (int x = 0; x < horizontalCountOfCells + 1; x++)
-            canvas.drawLine((float) x * canvasSize / horizontalCountOfCells, 0, (float) x * canvasSize / horizontalCountOfCells, canvasSize, paint);
-        for (int y = 0; y < verticalCountOfCells + 1; y++)
-            canvas.drawLine(0, (float) y * canvasSize / verticalCountOfCells, canvasSize, (float) y * canvasSize / verticalCountOfCells, paint);
 
 
         cellSize = (int)(canvasSize / horizontalCountOfCells);
@@ -109,17 +110,17 @@ public class GameView extends View {
 
         int[][] ar = matrix.toRawArray();
 
-        paintActive.setColor(Color.BLUE);
-        paintPassive.setColor(Color.BLACK);
+        paintActive.setColor(Color.parseColor("#46bb54"));
+        paintPassive.setColor(Color.parseColor("#9c9c9d"));
 
         for (int x1 = 0; x1 < ar.length; x1++) {
             for (int y1 = 0; y1 < ar.length; y1++) {
-                rectangle.set(x1 * cellSize, y1 * cellSize, (x1+1) * (cellSize), (y1+1) * cellSize);
+                rectangle.set(x1 * cellSize + INT, y1 * cellSize + INT, (x1+1) * (cellSize), (y1+1) * cellSize);
                 if (ar[x1][y1] == 1) {
 
-                    canvas.drawRect(rectangle, paintPassive);
+                    canvas.drawRoundRect(rectangle, RX, RX, paintActive);
                 }else {
-                    canvas.drawRect(rectangle,  paintActive);
+                    canvas.drawRoundRect(rectangle, RX, RX, paintPassive);
                 }
             }
         }

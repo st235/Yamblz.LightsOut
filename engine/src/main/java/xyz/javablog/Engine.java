@@ -11,5 +11,5 @@ public interface Engine {
     Field getPreviousField(int steps);
 
     Field clickCurrentField(Point point);
-    int calculateCurrentScore();
+    int calculateCurrentScore(long timeInMillis, int clicks);
 }

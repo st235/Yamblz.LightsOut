@@ -79,6 +79,7 @@
             android:text="@string/main_activity_header_clicks"/>
 
         <TextView
+            android:id="@+id/fragment_game_clicks_counter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/HeaderContent"
@@ -86,7 +87,7 @@
         </LinearLayout>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/button3"
+        android:id="@+id/fragment_game_button_undo"
         style="@style/HeaderClickableItem"
         android:background="@drawable/rounded_rectangle_header_bottom"
         android:layout_marginLeft="8dp"

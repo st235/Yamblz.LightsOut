@@ -34,6 +34,11 @@ public class GameFragment extends Fragment {
     private FrameLayout frameLayout;
     private TextView textView;
     private long startTime;
+    private Button undoButton;
+    private Button restartButton;
+    public TextView clicksTextView;
+    private long currentTime;
+
     private Handler timerHandler = new Handler();
     private Runnable timerRunnable = new Runnable() {
 
@@ -46,45 +51,45 @@ public class GameFragment extends Fragment {
     };
 
     private String setTime(long time) {
-            String timeHHMMS = "00:00";
-            int sec = 0;
-            int min = 0;
-            int hour;
-            String s;
-            String m;
+        currentTime = time;
 
-            sec = (int) time % 60;
-            hour = (int) (time / 3600);
-            min = (int) (time % 3600) / 60;
+        String timeHHMMS = "00:00";
+        int sec = 0;
+        int min = 0;
+        int hour;
+        String s;
+        String m;
 
-            if (hour == 0) {
+        sec = (int) time % 60;
+        hour = (int) (time / 3600);
+        min = (int) (time % 3600) / 60;
 
-                if (sec < 10) {
-                    s = "0" + sec;
-                } else s = String.valueOf(sec);
-                if (min < 10) {
+        if (hour == 0) {
 
-                    m = "0" + min;
-                } else m = String.valueOf(min);
+            if (sec < 10) {
+                s = "0" + sec;
+            } else s = String.valueOf(sec);
+            if (min < 10) {
 
-                timeHHMMS = m + ":" + s;
+                m = "0" + min;
+            } else m = String.valueOf(min);
 
-            } else {
+            timeHHMMS = m + ":" + s;
 
-                if (sec < 10) {
-                    s = "0" + sec;
-                } else s = String.valueOf(sec);
-                if (min < 10) {
+        } else {
 
-                    m = "0" + min;
-                } else m = String.valueOf(min);
+            if (sec < 10) {
+                s = "0" + sec;
+            } else s = String.valueOf(sec);
+            if (min < 10) {
 
-                timeHHMMS = hour + ":" + m + ":" + s;
-            }
-            return timeHHMMS;
-    private Button undoButton;
-    private Button restartButton;
-    public TextView clicksTextView;
+                m = "0" + min;
+            } else m = String.valueOf(min);
+
+            timeHHMMS = hour + ":" + m + ":" + s;
+        }
+        return timeHHMMS;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -118,9 +123,16 @@ public class GameFragment extends Fragment {
             @Override
             public void onItemClick(int x, int y) {
                 Field f = engine.clickCurrentField(new Click(x, y));
-                gameView.setMatrix(f.getMatrix());
                 clicks++;
                 clicksTextView.setText(String.valueOf(clicks));
+
+                if (f.isSolved()) {
+                    int score = engine.calculateCurrentScore(currentTime, clicks);
+                    listener.onFinish(score);
+                    return;
+                }
+
+                gameView.setMatrix(f.getMatrix());
                 gameView.invalidate();
             }
         });
@@ -129,11 +141,6 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Field f = engine.getPreviousField(1);
-
-                if (f.isSolved()) {
-                    return;
-                }
-
                 gameView.setMatrix(f.getMatrix());
                 gameView.invalidate();
             }

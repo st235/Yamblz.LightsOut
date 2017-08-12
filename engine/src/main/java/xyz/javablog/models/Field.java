@@ -7,4 +7,5 @@ package xyz.javablog.models;
 public interface Field {
     Size getSize();
     Matrix getMatrix();
+    GameState getGameState();
 }

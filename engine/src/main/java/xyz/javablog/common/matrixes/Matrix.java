@@ -1,4 +1,7 @@
-package xyz.javablog.models;
+package xyz.javablog.common.matrixes;
+
+import xyz.javablog.common.cells.Cell;
+import xyz.javablog.common.points.Point;
 
 /**
  * Created by alexander on 12/08/2017.
@@ -6,6 +9,5 @@ package xyz.javablog.models;
 
 public interface Matrix {
     Cell getCell(Point point);
-
     int[][] toRawArray();
 }

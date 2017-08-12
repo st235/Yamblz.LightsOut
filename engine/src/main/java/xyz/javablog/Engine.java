@@ -1,14 +1,15 @@
 package xyz.javablog;
 
-import xyz.javablog.models.Field;
-import xyz.javablog.models.Point;
-import xyz.javablog.models.Size;
+import xyz.javablog.common.fields.Field;
+import xyz.javablog.common.points.Point;
+import xyz.javablog.common.sizes.Size;
 
 public interface Engine {
     Field obtainNewField(Size size);
-    Field clickCurrentField(Point point);
+
     Field getOriginField();
     Field getPreviousField(int steps);
 
-    int calculateCurrentScore();
+    Field clickCurrentField(Point point);
+    int calculateCurrentScore(long timeInMillis, int clicks);
 }

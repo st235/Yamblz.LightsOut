@@ -16,9 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-import xyz.javablog.models.Matrix;
-import xyz.javablog.models.Point;
-import xyz.javablog.models.Size;
+import xyz.javablog.common.matrixes.Matrix;
+import xyz.javablog.common.sizes.Size;
 
 public class GameView extends View {
 
@@ -28,7 +27,6 @@ public class GameView extends View {
 
     private GestureDetector gestureDetector;
     private Bitmap bitmap;
-    private Canvas canvas;
     private Paint paint, bitmapPaint;
     private float canvasSize;
     private Size size;
@@ -73,7 +71,6 @@ public class GameView extends View {
         cellSize = (int) (canvasSize / horizontalCountOfCells);
 
         bitmap = Bitmap.createBitmap((int) canvasSize, (int) canvasSize, Bitmap.Config.ARGB_8888);
-        canvas = new Canvas(bitmap);
         bitmapPaint = new Paint(Paint.DITHER_FLAG);
 
         paint = new Paint();

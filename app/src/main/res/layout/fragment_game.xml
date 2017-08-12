@@ -150,11 +150,9 @@
         android:layout_marginTop="8dp">
 
         <sasd97.java_blog.xyz.yamblzlightsout.ui.GameView
+            android:id="@+id/fragment_game_game_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/game_view"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
             android:layout_gravity="center"/>
     </FrameLayout>
 

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Yamblz.LightsOut</string>
+    <string name="app_alias">Lights Out</string>
     
     <!-- Main Activity region -->
     <string name="main_activity_header_restart">Restart</string>

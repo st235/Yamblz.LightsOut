@@ -4,7 +4,6 @@ import xyz.javablog.common.Cell;
 import xyz.javablog.common.matrixes.MutableMatrix;
 import xyz.javablog.common.points.Point;
 import xyz.javablog.common.sizes.Size;
-import xyz.javablog.logic.utils.PointUtils;
 
 public class GameMutableMatrix implements MutableMatrix {
 
@@ -21,15 +20,15 @@ public class GameMutableMatrix implements MutableMatrix {
 
     @Override
     public void performClick(Point point) {
-        int[][] possibleClickArea = PointUtils.getNeighbours(point.getX(), point.getY());
+        int[][] possibleClickArea = PointHandler.getNeighbours(point.getX(), point.getY());
 
-        for(int i = 0; i < PointUtils.AREAS_COUNT; i++) {
+        for(int i = 0; i < PointHandler.AREAS_COUNT; i++) {
            int[] possibleClick = possibleClickArea[i];
            int x = possibleClick[0];
            int y = possibleClick[1];
 
-           if (!PointUtils.isValidPoint(width, height, x, y)) continue;
-           matrix[x][y] = PointUtils.switchArea(matrix[x][y]);
+           if (!PointHandler.isValidPoint(width, height, x, y)) continue;
+           matrix[x][y] = PointHandler.switchArea(matrix[x][y]);
         }
     }
 

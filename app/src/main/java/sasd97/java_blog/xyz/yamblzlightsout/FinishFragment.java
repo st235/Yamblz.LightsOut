@@ -63,7 +63,7 @@ public class FinishFragment extends Fragment {
         if (args == null) return;
 
         int score = args.getInt(SCORE_ARGS);
-        scoreTextView.setText(String.valueOf(score));
+        scoreTextView.setText(getString(R.string.fragment_game_score_points, score));
 
     }
 }

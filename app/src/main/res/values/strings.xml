@@ -8,4 +8,6 @@
     <string name="main_activity_header_time">Time</string>
     <string name="main_activity_header_clicks">Clicks</string>
     <!-- Endregion -->
+
+    <string name="fragment_game_score_points">%1$d points</string>
 </resources>

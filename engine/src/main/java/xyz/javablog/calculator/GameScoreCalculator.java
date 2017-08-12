@@ -13,13 +13,13 @@ public class GameScoreCalculator implements ScoreCalculator {
 
     public GameScoreCalculator() {
         weightMap.put(ScoreTypes.CLICKS, 0.81);
-        weightMap.put(ScoreTypes.TIME, 0.00007);
+        weightMap.put(ScoreTypes.TIME, 0.007);
     }
 
     @Override
     public ScoreCalculator push(int type, long value) {
         Double weight = weightMap.get(type);
-        result += 10000 / (weight * value);
+        result += 100 / (weight * value);
         return this;
     }
 

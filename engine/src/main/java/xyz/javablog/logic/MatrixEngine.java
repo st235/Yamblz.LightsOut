@@ -6,5 +6,4 @@ import xyz.javablog.models.Point;
 
 public interface MatrixEngine {
     Field pushForward(Point point, Matrix matrix);
-    Field pushBackward(Point point, Matrix matrix);
 }

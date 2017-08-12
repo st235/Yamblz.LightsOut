@@ -1,7 +1,5 @@
 package xyz.javablog.common.fields;
 
-import com.sun.istack.internal.NotNull;
-
 import xyz.javablog.common.GameState;
 import xyz.javablog.common.matrixes.Matrix;
 import xyz.javablog.common.sizes.Size;
@@ -15,8 +13,8 @@ public class GameField implements Field {
     private Size size;
     private Matrix matrix;
 
-    public GameField(@NotNull Size size,
-                     @NotNull Matrix matrix) {
+    public GameField(Size size,
+                     Matrix matrix) {
         this.size = size;
         this.matrix = matrix;
     }

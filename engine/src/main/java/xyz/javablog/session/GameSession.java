@@ -1,7 +1,5 @@
 package xyz.javablog.session;
 
-import com.sun.istack.internal.NotNull;
-
 import java.util.Stack;
 
 import xyz.javablog.common.fields.Field;
@@ -28,12 +26,12 @@ public class GameSession implements Session {
 
     private Stack<Point> history = new Stack<>();
 
-    public GameSession(@NotNull MatrixEngine matrixEngine) {
+    public GameSession(MatrixEngine matrixEngine) {
         this.matrixEngine = matrixEngine;
     }
 
     @Override
-    public Field init(@NotNull Size size) {
+    public Field init(Size size) {
         isSessionInit = true;
         this.size = size;
         this.originMatrix = matrixEngine.generate(size);
@@ -49,7 +47,7 @@ public class GameSession implements Session {
     }
 
     @Override
-    public Field clickForward(@NotNull Point point) {
+    public Field clickForward(Point point) {
         history.push(point);
         this.activeMatrix = matrixEngine.pushForward(point, activeMatrix);
         return new GameField(size, activeMatrix);

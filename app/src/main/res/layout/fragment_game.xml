@@ -36,7 +36,7 @@
         app:layout_constraintRight_toLeftOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_game_button_undo"
         app:layout_constraintVertical_bias="0.5"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp">

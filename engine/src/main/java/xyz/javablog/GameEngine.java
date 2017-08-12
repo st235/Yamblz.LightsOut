@@ -1,5 +1,8 @@
 package xyz.javablog;
 
+import xyz.javablog.calculator.GameScoreCalculator;
+import xyz.javablog.calculator.ScoreCalculator;
+import xyz.javablog.calculator.ScoreTypes;
 import xyz.javablog.common.fields.Field;
 import xyz.javablog.common.points.Point;
 import xyz.javablog.common.sizes.Size;
@@ -48,9 +51,11 @@ public class GameEngine implements Engine {
     }
 
     @Override
-    public int calculateCurrentScore() {
+    public int calculateCurrentScore(long timeInMillis, int clicks) {
         checkSession(session);
-
-        return 0;
+        ScoreCalculator calculator = new GameScoreCalculator();
+        return calculator.push(ScoreTypes.TIME, timeInMillis)
+                .push(ScoreTypes.CLICKS, clicks)
+                .calculate();
     }
 }

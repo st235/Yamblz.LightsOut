@@ -1,4 +1,4 @@
-package xyz.javablog.common;
+package xyz.javablog.common.cells;
 
 import xyz.javablog.common.points.Point;
 
@@ -7,7 +7,6 @@ import xyz.javablog.common.points.Point;
  */
 
 public interface Cell {
-    int getState();
     int getType();
     Point getCoordinates();
 }

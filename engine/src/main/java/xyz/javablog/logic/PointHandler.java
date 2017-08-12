@@ -2,6 +2,7 @@ package xyz.javablog.logic;
 
 import java.util.Random;
 
+import xyz.javablog.common.CellTypes;
 import xyz.javablog.common.points.GamePoint;
 import xyz.javablog.common.points.Point;
 import xyz.javablog.common.sizes.Size;
@@ -16,7 +17,8 @@ public class PointHandler {
     }
 
     public static int switchArea(int value) {
-        return value == 0 ? 1 : 0;
+        return value == CellTypes.EMPTY
+                ? CellTypes.LIGHT : CellTypes.EMPTY;
     }
 
     public static int[][] getNeighbours(int x, int y) {

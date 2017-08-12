@@ -22,7 +22,7 @@ public class GameEngine implements Engine {
     private Session session;
     private MatrixEngine matrixEngine;
 
-    public GameEngine() {
+    GameEngine() {
         this.matrixEngine = new GameMatrixEngine();
     }
 

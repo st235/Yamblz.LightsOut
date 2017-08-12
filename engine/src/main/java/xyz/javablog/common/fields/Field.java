@@ -1,6 +1,5 @@
 package xyz.javablog.common.fields;
 
-import xyz.javablog.common.GameState;
 import xyz.javablog.common.matrixes.Matrix;
 import xyz.javablog.common.sizes.Size;
 
@@ -11,5 +10,6 @@ import xyz.javablog.common.sizes.Size;
 public interface Field {
     Size getSize();
     Matrix getMatrix();
-    GameState getGameState();
+
+    boolean isSolved();
 }

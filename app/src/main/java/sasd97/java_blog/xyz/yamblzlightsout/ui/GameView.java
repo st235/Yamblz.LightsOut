@@ -4,7 +4,10 @@ package sasd97.java_blog.xyz.yamblzlightsout.ui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
@@ -13,10 +16,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
+import xyz.javablog.models.Matrix;
 import xyz.javablog.models.Point;
 import xyz.javablog.models.Size;
 
 public class GameView extends View {
+
+    public interface OnGridItemClickListener {
+        public void onItemClick(int x, int y);
+    }
+
     private GestureDetector gestureDetector;
     private Bitmap bitmap;
     private Canvas canvas;
@@ -27,6 +36,17 @@ public class GameView extends View {
     private int verticalCountOfCells;
     private int cellX;
     private int cellY;
+    private Matrix matrix;
+    private int cellSize;
+    private Paint paintActive = new Paint();
+    private Paint paintPassive = new Paint();
+    private Rect rectangle = new Rect();
+
+    private OnGridItemClickListener listener;
+
+    public void setListener(@NonNull OnGridItemClickListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -43,9 +63,14 @@ public class GameView extends View {
 
         gestureDetector = new GestureDetector(context, new MyGestureDetector());
 
+
+
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         canvasSize = display.getWidth();
+
+
+        cellSize = (int) (canvasSize / horizontalCountOfCells);
 
         bitmap = Bitmap.createBitmap((int) canvasSize, (int) canvasSize, Bitmap.Config.ARGB_8888);
         canvas = new Canvas(bitmap);
@@ -67,6 +92,9 @@ public class GameView extends View {
         horizontalCountOfCells = size.getWidth();
         verticalCountOfCells = size.getHeight();
     }
+    public void setMatrix(Matrix matrix) {
+        this.matrix = matrix;
+    }
 
 
     @Override
@@ -77,7 +105,41 @@ public class GameView extends View {
         for (int y = 0; y < verticalCountOfCells + 1; y++)
             canvas.drawLine(0, (float) y * canvasSize / verticalCountOfCells, canvasSize, (float) y * canvasSize / verticalCountOfCells, paint);
 
+
+        cellSize = (int)(canvasSize / horizontalCountOfCells);
+
+        paintPassive.setColor(Color.BLUE);
+
+        int[][] ar = matrix.toRawArray();
+
+        paintActive.setColor(Color.BLUE);
+        paintPassive.setColor(Color.BLACK);
+
+        for (int x1 = 0; x1 < ar.length; x1++) {
+            for (int y1 = 0; y1 < ar.length; y1++) {
+                rectangle.set(x1 * cellSize, y1 * cellSize, (x1+1) * (cellSize), (y1+1) * cellSize);
+                if (ar[x1][y1] == 1) {
+
+                    canvas.drawRect(rectangle, paintPassive);
+                }else {
+                    canvas.drawRect(rectangle,  paintActive);
+                }
+            }
+        }
+
+
+
         canvas.drawBitmap(bitmap, 0, 0, bitmapPaint);
+    }
+
+    public void getTapPoint(){
+        int x = -1;
+        int y = -1;
+
+        x = (int) Math.ceil(cellX / cellSize);
+        y = (int) Math.ceil(cellY / cellSize);
+
+        if (listener != null) listener.onItemClick(x, y);
     }
 
     @Override
@@ -94,24 +156,9 @@ public class GameView extends View {
             cellX = (int) ((event.getX() + getScrollX()));
             cellY = (int) ((event.getY() + getScrollY()));
 
-            Log.d(this.getClass().getName(), "onSingleTapConfirmed: " + cellX + " " + cellY);
 
             getTapPoint();
             return true;
         }
-    }
-
-    public Point getTapPoint(){
-        Point point;
-        int x = -1;
-        int y = -1;
-
-        int cellSize = (int) (canvasSize / horizontalCountOfCells);
-
-        x = (int) Math.ceil(cellX / cellSize);
-        y = (int) Math.ceil(cellY / cellSize);
-
-        point = new PointImpl(x, y);
-        return point;
     }
 }

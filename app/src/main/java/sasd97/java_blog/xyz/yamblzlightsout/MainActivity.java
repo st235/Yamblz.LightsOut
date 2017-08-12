@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.RelativeLayout;
 
 import sasd97.java_blog.xyz.yamblzlightsout.ui.GameView;
-import sasd97.java_blog.xyz.yamblzlightsout.ui.SizeImpl;
+import xyz.javablog.models.Matrix;
 import xyz.javablog.models.Size;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,9 +18,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         rl = (RelativeLayout) findViewById(R.id.ll);
         gameView = (GameView) findViewById(R.id.game_view);
-        Size size = new SizeImpl(3, 3);
+        Size size = new SizeImpl(5, 5);
+
+        int[][] ar = new int[5][5];
+
+        ar[1][1] = 1;
+
+        ar[4][4] = 1;
+
+        Matrix matrix = new MatrixImpl(ar);
+
         gameView.measure(rl.getWidth(), rl.getHeight());
         gameView.setNewSize(size);
+        gameView.setMatrix(matrix);
 
     }
 }

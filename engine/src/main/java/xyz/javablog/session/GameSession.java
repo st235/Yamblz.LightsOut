@@ -56,6 +56,7 @@ public class GameSession implements Session {
     @Override
     public Field clickBackward(int steps) {
         for (int i = 0; i < steps; i++) {
+            if (history.isEmpty()) break;
             Point last = history.pop();
             this.activeMatrix = matrixEngine.pushForward(last, activeMatrix);
         }

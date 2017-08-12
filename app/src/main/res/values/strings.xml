@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Yamblz.LightsOut</string>
+    
+    <!-- Main Activity region -->
+    <string name="main_activity_header_restart">Restart</string>
+    <string name="main_activity_header_undo">Undo</string>
+    <string name="main_activity_header_time">Time</string>
+    <string name="main_activity_header_clicks">Clicks</string>
+    <!-- Endregion -->
 </resources>

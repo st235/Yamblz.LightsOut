@@ -1,6 +1,5 @@
 package xyz.javablog.common.fields;
 
-import xyz.javablog.common.GameState;
 import xyz.javablog.common.matrixes.Matrix;
 import xyz.javablog.common.sizes.Size;
 
@@ -12,11 +11,20 @@ public class GameField implements Field {
 
     private Size size;
     private Matrix matrix;
+    private boolean solvedState = false;
 
     public GameField(Size size,
                      Matrix matrix) {
         this.size = size;
         this.matrix = matrix;
+    }
+
+    public GameField(Size size,
+                     Matrix matrix,
+                     boolean solvedState) {
+        this.size = size;
+        this.matrix = matrix;
+        this.solvedState = solvedState;
     }
 
     @Override
@@ -30,7 +38,7 @@ public class GameField implements Field {
     }
 
     @Override
-    public GameState getGameState() {
-        return null;
+    public boolean isSolved() {
+        return solvedState;
     }
 }

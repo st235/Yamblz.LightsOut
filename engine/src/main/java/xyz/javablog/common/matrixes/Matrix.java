@@ -1,6 +1,6 @@
 package xyz.javablog.common.matrixes;
 
-import xyz.javablog.common.Cell;
+import xyz.javablog.common.cells.Cell;
 import xyz.javablog.common.points.Point;
 
 /**

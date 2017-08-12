@@ -50,7 +50,7 @@ public class GameSession implements Session {
     public Field clickForward(Point point) {
         history.push(point);
         this.activeMatrix = matrixEngine.pushForward(point, activeMatrix);
-        return new GameField(size, activeMatrix);
+        return new GameField(size, activeMatrix, activeMatrix.isSolved());
     }
 
     @Override
@@ -59,7 +59,7 @@ public class GameSession implements Session {
             Point last = history.pop();
             this.activeMatrix = matrixEngine.pushForward(last, activeMatrix);
         }
-        return new GameField(size, activeMatrix);
+        return new GameField(size, activeMatrix, activeMatrix.isSolved());
     }
 
     @Override

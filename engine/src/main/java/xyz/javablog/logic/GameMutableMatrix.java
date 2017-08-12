@@ -1,6 +1,7 @@
 package xyz.javablog.logic;
 
-import xyz.javablog.common.Cell;
+import xyz.javablog.common.cells.Cell;
+import xyz.javablog.common.cells.PrimitiveCell;
 import xyz.javablog.common.matrixes.Matrix;
 import xyz.javablog.common.matrixes.MutableMatrix;
 import xyz.javablog.common.points.Point;
@@ -42,12 +43,18 @@ public class GameMutableMatrix implements MutableMatrix {
 
     @Override
     public Cell getCell(Point point) {
-        return null;
+        int type = matrix[point.getX()][point.getY()];
+        return new PrimitiveCell(type, point);
     }
 
     @Override
     public int[][] toRawArray() {
         return matrix;
+    }
+
+    @Override
+    public boolean isSolved() {
+        return MatrixHandler.isNull(matrix);
     }
 
     @Override

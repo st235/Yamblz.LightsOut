@@ -1,8 +1,8 @@
 package xyz.javablog;
 
-import xyz.javablog.models.Field;
-import xyz.javablog.models.Point;
-import xyz.javablog.models.Size;
+import xyz.javablog.common.Field;
+import xyz.javablog.common.points.Point;
+import xyz.javablog.common.sizes.Size;
 
 public interface Engine {
     Field obtainNewField(Size size);

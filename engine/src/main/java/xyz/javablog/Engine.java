@@ -1,4 +1,4 @@
 package xyz.javablog;
 
-public class MyClass {
+public class Engine {
 }

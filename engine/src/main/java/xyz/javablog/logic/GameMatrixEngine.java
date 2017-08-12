@@ -1,9 +1,8 @@
 package xyz.javablog.logic;
 
-import logic.models.MatrixEngine;
-import models.Field;
-import models.Matrix;
-import models.Point;
+import xyz.javablog.common.Field;
+import xyz.javablog.common.matrixes.Matrix;
+import xyz.javablog.common.points.Point;
 
 public class GameMatrixEngine implements MatrixEngine {
 

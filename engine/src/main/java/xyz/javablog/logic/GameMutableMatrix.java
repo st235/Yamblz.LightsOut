@@ -1,10 +1,10 @@
 package xyz.javablog.logic;
 
-import logic.models.MutableMatrix;
-import logic.utils.PointUtils;
-import models.Cell;
-import models.Point;
-import models.Size;
+import xyz.javablog.common.Cell;
+import xyz.javablog.common.matrixes.MutableMatrix;
+import xyz.javablog.common.points.Point;
+import xyz.javablog.common.sizes.Size;
+import xyz.javablog.logic.utils.PointUtils;
 
 public class GameMutableMatrix implements MutableMatrix {
 

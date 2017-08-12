@@ -1,5 +1,6 @@
-package xyz.javablog.common;
+package xyz.javablog.common.fields;
 
+import xyz.javablog.common.GameState;
 import xyz.javablog.common.matrixes.Matrix;
 import xyz.javablog.common.sizes.Size;
 

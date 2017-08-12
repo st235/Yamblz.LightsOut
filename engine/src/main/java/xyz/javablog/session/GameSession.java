@@ -26,7 +26,7 @@ public class GameSession implements Session {
 
     private Stack<Point> history = new Stack<>();
 
-    GameSession(MatrixEngine matrixEngine) {
+    public GameSession(MatrixEngine matrixEngine) {
         this.matrixEngine = matrixEngine;
     }
 

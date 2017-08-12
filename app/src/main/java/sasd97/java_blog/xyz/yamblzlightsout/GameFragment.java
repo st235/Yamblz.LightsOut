@@ -35,11 +35,10 @@ public class GameFragment extends Fragment {
 
         final Engine engine = GameEngineProvider.getEngine();
         Field field = engine.obtainNewField(new SquareSize(5));
-        Log.d("HERE", field.toString());
 
         gameView = v.findViewById(R.id.fragment_game_game_view);
-        clicksTextView = v.findViewById(R.id.CLICKSTextView);
-        undoButton = v.findViewById(R.id.undoButton);
+        clicksTextView = v.findViewById(R.id.fragment_game_clicks_counter);
+        undoButton = v.findViewById(R.id.fragment_game_button_undo);
         gameView.setNewSize(new SquareSize(5));
 
         gameView.setMatrix(field.getMatrix());
@@ -47,13 +46,10 @@ public class GameFragment extends Fragment {
         gameView.setListener(new GameView.OnGridItemClickListener() {
             @Override
             public void onItemClick(int x, int y) {
-                Log.d("HERE", "adsadasda");
                 Field f = engine.clickCurrentField(new Click(x, y));
-                Log.d("HERE", f.toString());
                 gameView.setMatrix(f.getMatrix());
                 clicks++;
                 clicksTextView.setText(String.valueOf(clicks));
-
                 gameView.invalidate();
             }
         });
@@ -63,7 +59,6 @@ public class GameFragment extends Fragment {
             public void onClick(View view) {
                 Field f = engine.getPreviousField(1);
                 gameView.setMatrix(f.getMatrix());
-
                 gameView.invalidate();
             }
         });

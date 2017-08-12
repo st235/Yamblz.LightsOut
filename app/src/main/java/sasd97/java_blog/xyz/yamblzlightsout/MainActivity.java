@@ -2,11 +2,17 @@ package sasd97.java_blog.xyz.yamblzlightsout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import xyz.javablog.Engine;
 import xyz.javablog.GameEngine;
+import xyz.javablog.common.fields.Field;
+import xyz.javablog.common.points.Click;
+import xyz.javablog.common.sizes.SquareSize;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getCanonicalName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

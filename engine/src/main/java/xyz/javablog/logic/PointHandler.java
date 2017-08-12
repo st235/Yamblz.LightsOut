@@ -32,7 +32,7 @@ public class PointHandler {
     public static Point[] obtainRandomPoints(Size size) {
         int limit = size.getWidth() * size.getHeight();
 
-        int seed = random.nextInt(4);
+        int seed = random.nextInt(4) + 1;
         int randomLimit = random.nextInt(limit / seed);
 
         Point[] points = new Point[randomLimit];

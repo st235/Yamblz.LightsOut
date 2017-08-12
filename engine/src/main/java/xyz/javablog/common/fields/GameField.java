@@ -41,4 +41,14 @@ public class GameField implements Field {
     public boolean isSolved() {
         return solvedState;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("GameField{");
+        sb.append("size=").append(size);
+        sb.append(", matrix=").append(matrix);
+        sb.append(", solvedState=").append(solvedState);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -6,6 +6,7 @@ import android.util.Log;
 
 import xyz.javablog.Engine;
 import xyz.javablog.GameEngine;
+import xyz.javablog.GameEngineProvider;
 import xyz.javablog.common.fields.Field;
 import xyz.javablog.common.points.Click;
 import xyz.javablog.common.sizes.SquareSize;
@@ -18,5 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Engine engine = GameEngineProvider.getEngine();
+        Field field = engine.obtainNewField(new SquareSize(15));
+        Log.d(TAG, field.toString());
     }
 }

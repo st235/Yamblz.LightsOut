@@ -19,4 +19,13 @@ public class SquareSize implements Size {
     public int getHeight() {
         return height;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("SquareSize{");
+        sb.append("width=").append(width);
+        sb.append(", height=").append(height);
+        sb.append("}\n");
+        return sb.toString();
+    }
 }

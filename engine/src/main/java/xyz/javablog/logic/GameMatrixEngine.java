@@ -21,6 +21,4 @@ public class GameMatrixEngine implements MatrixEngine {
         matrix.performClick(point);
         return matrix;
     }
-
-    private
 }
